@@ -1,0 +1,56 @@
+{
+  "manifest_version": "0.3",
+  "name": "mcpopensearch",
+  "version": "0.1.0",
+  "description": "Read-only MCP server for exploring and searching OpenSearch 2 clusters. Ideal for log analysis, index exploration, and query execution via OpenSearch Query DSL.",
+  "author": {
+    "name": "Diego Mayán",
+    "email": "diego.mayan@ssservicios.com.ar"
+  },
+  "display_name": "OpenSearch 2",
+  "user_config": {
+    "opensearch_url": {
+      "type": "string",
+      "title": "OpenSearch URL",
+      "description": "HTTP API URL of your OpenSearch cluster (e.g., http://localhost:9200)",
+      "required": true,
+      "default": "http://localhost:9200"
+    },
+    "opensearch_username": {
+      "type": "string",
+      "title": "Username",
+      "description": "Username for basic authentication (leave empty for no auth)",
+      "required": false
+    },
+    "opensearch_password": {
+      "type": "string",
+      "title": "Password",
+      "description": "Password for basic authentication",
+      "sensitive": true,
+      "required": false
+    }
+  },
+  "server": {
+    "type": "python",
+    "entry_point": "server.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "server.py"
+      ],
+      "env": {
+        "OPENSEARCH_URL": "${user_config.opensearch_url}",
+        "OPENSEARCH_USERNAME": "${user_config.opensearch_username}",
+        "OPENSEARCH_PASSWORD": "${user_config.opensearch_password}"
+      }
+    }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmayan-ss/mcpopensearch"
+  }
+}

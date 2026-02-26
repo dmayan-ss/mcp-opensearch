@@ -1,0 +1,10 @@
+[project]
+name = "mcpopensearch"
+version = "0.1.0"
+description = "MCP server for OpenSearch 2 — read-only log exploration and search"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]>=1.2.0",
+    "httpx>=0.27.0",
+]
