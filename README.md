@@ -1,4 +1,4 @@
-# mcpopensearch
+# mcp-opensearch
 
 Read-only MCP server for exploring and searching [OpenSearch 2](https://opensearch.org/) clusters. Ideal for log analysis, index exploration, and query execution.
 
